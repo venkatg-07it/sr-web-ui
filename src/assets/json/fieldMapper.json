@@ -1,0 +1,22 @@
+{
+    "S.NO":"sno",
+    "CUSTOMER NAME":"customerName",
+    "CUSTOMER CODE":"customerCode",
+    "PO NUMBER":"poNumber",
+    "PO DATE":"poDate",
+    "MSN CODE":"msnCode",
+    "SALE ORDER NO":"saleOrderNo",
+    "ITEM CODE":"itemCode",
+    "ITEM DESCRIPTION":"itemDescription",
+    "REVISION LEVEL":"revisionLevel",
+    "UNIT COST/ BASIC PRICE":"unitCostBasicPrice",
+    "REQUIRED DATE":"requiredDate",
+    "REQUIRED QTY":"requiredQty",
+    "UOM":"uom",
+    "SUOM":"suom",
+    "TAX SET":"taxSet",
+    "TAX CLASS":"taxClass",
+    "FULL ADDRESS":"fullAddress",
+    "DATE":"date",
+    "COMMENTS":"comments"
+}

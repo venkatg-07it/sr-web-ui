@@ -1,0 +1,9 @@
+{
+    "PO_FILE_UPLOAD": {
+        "visibleFields": [
+            "S.NO",
+            "CUSTOMER NAME",
+            "PO NUMBER"
+        ]
+    }
+}
