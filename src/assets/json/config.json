@@ -3,7 +3,7 @@
         "visibleFields": [
             "S.NO",
             "CUSTOMER NAME",
-            "PO NUMBER"
+            "CUSTOMER CODE"
         ]
     }
 }

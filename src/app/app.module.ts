@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { FileUploadComponent } from './common/file-upload/file-upload.component';
 import { HeaderComponent } from './components/header/header.component';
 import { GridComponent } from './common/grid/grid.component';
+import { ItemMasterCompUploadComponent } from './components/item-master-comp-upload/item-master-comp-upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FileUploadComponent,
     HeaderComponent,
-    GridComponent
+    GridComponent,
+    ItemMasterCompUploadComponent
   ],
   imports: [
     BrowserModule,
