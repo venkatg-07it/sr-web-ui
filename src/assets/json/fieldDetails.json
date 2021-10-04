@@ -1,0 +1,413 @@
+{
+    "S.No.": {
+        "headerName": "S.No.",
+        "field": "sNo",
+        "width": 70,
+        "editable": false,
+        "pinned": "left"
+    },
+    "Customer Name":{
+        "headerName": "Customer Name",
+        "field": "customerName",
+        "width": 200,
+        "editable": false,
+        "pinned": "left"
+    },
+    "Customer Code":{
+        "headerName": "Customer Code",
+        "field": "customerCode",
+        "width": 200,
+        "editable": false
+    },
+    "Item Code":{
+        "headerName": "Item Code",
+        "field": "itemCode",
+        "width": 200,
+        "editable": false,
+        "filter": "agTextColumnFilter"
+    },
+    "Description":{
+        "headerName": "Description",
+        "field": "description",
+        "width": 200,
+        "editable": false
+    },
+    "Reference Standard": {
+        "headerName": "Reference Standard",
+        "field": "referenceStandard",
+        "width": 200,
+        "editable": false
+    },
+    "Equivalent Samraj Item Code": {
+        "headerName": "Equivalent Samraj Item Code",
+        "field": "equivalentSamrajItemCode",
+        "width": 200,
+        "editable": false
+    },
+    "Live/Retired": {
+        "headerName": "Live/Retired",
+        "field": "liveOrRetried",
+        "width": 200,
+        "editable": false
+    },
+    "Revision Level":{
+        "headerName": "Revision Level",
+        "field": "revisionLevel",
+        "width": 200,
+        "editable": false
+    },
+    "UOM":{
+        "headerName": "UOM",
+        "field": "uom",
+        "width": 100,
+        "editable": false
+    },
+    "SUOM":{
+        "headerName": "SUOM",
+        "field": "suom",
+        "width": 100,
+        "editable": false
+    },
+    "LC-1":{
+        "headerName": "LC-1",
+        "field": "lc1",
+        "width": 100,
+        "editable": false
+    },
+    "LC-2":{
+        "headerName": "LC-2",
+        "field": "lc2",
+        "width": 100,
+        "editable": false
+    },
+    "Process Revision Level":{
+        "headerName": "Process Revision Level",
+        "field": "processRevisionLevel",
+        "width": 100,
+        "editable": false
+    },
+    "Process-1":{
+        "headerName": "Process-1",
+        "field": "process1",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-1":{
+        "headerName": "Machine-1",
+        "field": "machine1",
+        "width": 150,
+        "editable": false
+    },
+    "Process-2":{
+        "headerName": "Process-2",
+        "field": "process2",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-2":{
+        "headerName": "Machine-2",
+        "field": "machine2",
+        "width": 150,
+        "editable": false
+    },
+    "Process-3":{
+        "headerName": "Process-3",
+        "field": "process3",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-3":{
+        "headerName": "Machine-3",
+        "field": "machine3",
+        "width": 150,
+        "editable": false
+    },
+    "Process-4":{
+        "headerName": "Process-4",
+        "field": "process4",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-4":{
+        "headerName": "Machine-4",
+        "field": "machine4",
+        "width": 150,
+        "editable": false
+    },
+    "Process-5":{
+        "headerName": "Process-5",
+        "field": "process5",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-5":{
+        "headerName": "Machine-5",
+        "field": "machine5",
+        "width": 150,
+        "editable": false
+    },
+    "Process-6":{
+        "headerName": "Process-6",
+        "field": "process6",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-6":{
+        "headerName": "Machine-6",
+        "field": "machine6",
+        "width": 150,
+        "editable": false
+    },
+    "Process-7":{
+        "headerName": "Process-7",
+        "field": "process7",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-7":{
+        "headerName": "Machine-7",
+        "field": "machine7",
+        "width": 150,
+        "editable": false
+    },
+    "Process-8":{
+        "headerName": "Process-8",
+        "field": "process8",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-8":{
+        "headerName": "Machine-8",
+        "field": "machine8",
+        "width": 150,
+        "editable": false
+    },
+    "Process-9":{
+        "headerName": "Process-9",
+        "field": "process9",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-9":{
+        "headerName": "Machine-9",
+        "field": "machine9",
+        "width": 150,
+        "editable": false
+    },
+    "Process-10":{
+        "headerName": "Process-10",
+        "field": "process10",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-10":{
+        "headerName": "Machine-10",
+        "field": "machine10",
+        "width": 150,
+        "editable": false
+    },
+    "Process-11":{
+        "headerName": "Process-11",
+        "field": "process11",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-11":{
+        "headerName": "Machine-11",
+        "field": "machine11",
+        "width": 150,
+        "editable": false
+    },
+    "Process-12":{
+        "headerName": "Process-12",
+        "field": "process12",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-12":{
+        "headerName": "Machine-12",
+        "field": "machine12",
+        "width": 150,
+        "editable": false
+    },
+    "Process-13":{
+        "headerName": "Process-13",
+        "field": "process13",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-13":{
+        "headerName": "Machine-13",
+        "field": "machine13",
+        "width": 150,
+        "editable": false
+    },
+    "Process-14":{
+        "headerName": "Process-14",
+        "field": "process14",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-14":{
+        "headerName": "Machine-14",
+        "field": "machine14",
+        "width": 150,
+        "editable": false
+    },
+    "Process-15":{
+        "headerName": "Process-15",
+        "field": "process15",
+        "width": 150,
+        "editable": false
+    },
+    "Machine-15":{
+        "headerName": "Machine-15",
+        "field": "machine15",
+        "width": 150,
+        "editable": false
+    },
+    "Finish Type":{
+        "headerName": "Finish Type",
+        "field": "finishType",
+        "width": 100,
+        "editable": false
+    },
+    "Surface Preparation":{
+        "headerName": "Surface Preparation",
+        "field": "surfacePreparation",
+        "width": 100,
+        "editable": false
+    },
+    "Primer Colour":{
+        "headerName": "Primer Colour",
+        "field": "primerColour",
+        "width": 100,
+        "editable": false
+    },
+    "Primer DFT":{
+        "headerName": "Primer DFT",
+        "field": "primerDFT",
+        "width": 100,
+        "editable": false
+    },
+    "IMO Colour":{
+        "headerName": "IMO Colour",
+        "field": "imoColour",
+        "width": 100,
+        "editable": false
+    },
+    "IMO DFT":{
+        "headerName": "IMO DFT",
+        "field": "imoDFT",
+        "width": 100,
+        "editable": false
+    },
+    "Top Coat Colour":{
+        "headerName": "Top Coat Colour",
+        "field": "topCoatColour",
+        "width": 100,
+        "editable": false
+    },
+    "Top Coat DFT":{
+        "headerName": "Top Coat DFT",
+        "field": "topCoatDFT",
+        "width": 100,
+        "editable": false
+    },
+    "Special Finish Details":{
+        "headerName": "Special Finish Details",
+        "field": "specialFinishDetails",
+        "width": 100,
+        "editable": false
+    },
+    "QUALITY FLAG":{
+        "headerName": "QUALITY FLAG",
+        "field": "qualityFlag",
+        "width": 100,
+        "editable": false
+    },
+    "Inspection Criteria":{
+        "headerName": "Inspection Criteria",
+        "field": "inspectionCriteria",
+        "width": 20,
+        "editable": false
+    },
+    "Qty to be Inspected":{
+        "headerName": "Qty to be Inspected",
+        "field": "qtyToBeInspected",
+        "width": 100,
+        "editable": false
+    },
+    "Image 1":{
+        "headerName": "Image 1",
+        "field": "image1",
+        "width": 100,
+        "editable": false
+    },
+    "Image 2":{
+        "headerName": "Image 2",
+        "field": "image2",
+        "width": 100,
+        "editable": false
+    },
+    "Remarks":{
+        "headerName": "Remarks",
+        "field": "remarks",
+        "width": 100,
+        "editable": false
+    },
+    "Group Code":{
+        "headerName": "Group Code",
+        "field": "groupCode",
+        "width": 100,
+        "editable": false
+    },
+    "Inventory Code":{
+        "headerName": "Inventory Code",
+        "field": "inventoryCode",
+        "width": 100,
+        "editable": false
+    },
+    "Handling Person-1":{
+        "headerName": "Handling Person-1",
+        "field": "handlingPerson1",
+        "width": 100,
+        "editable": false
+    },
+    "Handling Person-2":{
+        "headerName": "Handling Person-2",
+        "field": "handlingPerson2",
+        "width": 100,
+        "editable": false
+    },
+    "CLASSIFICATION CODE":{
+        "headerName": "CLASSIFICATION CODE",
+        "field": "classificationCode",
+        "width": 100,
+        "editable": false
+    },
+    "Item Classification (2)":{
+        "headerName": "Item Classification (2)",
+        "field": "itemClassification",
+        "width": 100,
+        "editable": false
+    },
+    "Location of origin (2)":{
+        "headerName": "Location of origin (2)",
+        "field": "locationOfOrigin",
+        "width": 100,
+        "editable": false
+    },
+    "Engineering issue level (2)":{
+        "headerName": "Engineering issue level (2)",
+        "field": "engineeringIssueLevel",
+        "width": 100,
+        "editable": false
+    },
+    "Raw material Specifications(2)":{
+        "headerName": "Raw material Specifications(2)",
+        "field": "rawMaterialSpecifications",
+        "width": 100,
+        "editable": false
+    }
+}

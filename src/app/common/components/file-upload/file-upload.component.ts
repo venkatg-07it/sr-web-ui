@@ -1,8 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import * as JSZip from 'jszip';
-import { IFileResponse } from 'src/app/model/IFileResponse';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { IFileResponse } from 'src/app/common/model/IFileResponse';
+import { UtilService } from '../../services/util.service';
+
 
 @Component({
   selector: 'app-file-upload',
@@ -13,26 +13,49 @@ export class FileUploadComponent implements OnInit {
 
   @Output()
   fileResponse = new EventEmitter<IFileResponse[]>();
-  
-  fieldMapper: any;
-  private _jsonURL = './../../../assets/json/fieldMapper.json';
+  @Output()
+  fileUploaded = new EventEmitter<boolean>();
+  @Output()
+  modify = new EventEmitter<boolean>();
+  @Output()
+  submit = new EventEmitter<boolean>();
+  @Input()
+  jsonLocation: string = "";
+  @Input()
+  isError:boolean = false;
 
-  constructor(private http: HttpClient) {
-    this.getJSON().subscribe(data => {
-      this.fieldMapper = data;
-     });
-   }
+  fieldDetails: any;
+  isModify: boolean = false;
+  disableSubmit: boolean = true;
+  
+  constructor(private utilService: UtilService) {
+
+  }
 
   ngOnInit(): void {
   }
 
+  ngOnChanges() {
+    if(!this.fieldDetails && this.jsonLocation) {
+      this.utilService.getJSON(this.jsonLocation + "field_details.json").subscribe(data => {
+        this.fieldDetails = data;
+       });
+    }
+  }
+
   selectFile(event: any): void {
-    
+    this.fileUploaded.emit(true);
+    this.modify.emit(this.isModify);
     JSZip.loadAsync(event.target.files[0]).then(response => {
       this.loadExcelContent(response.files);
     });
 
   }
+
+  onSubmit() {
+    this.submit.emit(true);
+  }
+
 
   loadExcelContent(files: {[key: string]: JSZip.JSZipObject;}) {
       let sheetId = 1;
@@ -56,6 +79,7 @@ export class FileUploadComponent implements OnInit {
       Promise.all(contents).then(values => {
         let response = this.extractExcelFiles(values);
         this.fileResponse.emit(response);
+        this.fileUploaded.emit(false);
       });
   }
 
@@ -85,7 +109,7 @@ export class FileUploadComponent implements OnInit {
     for(let idx = 0; idx < length; idx++) {
       let value = childNodes[idx].textContent;
       if(value) {
-        sharedStrings.push(value);
+        sharedStrings.push(value.trim());
       }
     }
     return sharedStrings;
@@ -97,7 +121,7 @@ export class FileUploadComponent implements OnInit {
     let xmlObject = parser.parseFromString(content, "text/xml");
     let rowNodes = xmlObject.getElementsByTagName("row");
     let response: IFileResponse = {};
-    if(rowNodes.length > 0) {
+    if(rowNodes.length > 1) {
       response = this.getColumnMetaData(rowNodes[0], sharedStrings);
       response.sheetContent = this.getRowDatas(
         rowNodes,
@@ -105,7 +129,9 @@ export class FileUploadComponent implements OnInit {
         sharedStrings,
         response.mapperFields
       );
+      this.disableSubmit = false;
     }
+    
 
     return response;
   }
@@ -119,11 +145,17 @@ export class FileUploadComponent implements OnInit {
 
     for(let colIdx = 0; colIdx < columnCount; colIdx++) {
       let colVal = headerCols[colIdx].textContent;
+      
       if(colVal) {
         let colTitle = sharedStrings[parseInt(colVal)];
-        if(colTitle) {
-          colKeys.push(this.fieldMapper[colTitle]);
-          colMapper[this.fieldMapper[colTitle]] = colTitle;
+        colTitle = colTitle.trim();
+        let colKey = this.fieldDetails[colTitle].field;
+        if(colTitle && colKey) {
+          colKeys.push(colKey);
+          colMapper[colKey] = colTitle;
+        }
+        else {
+          console.log("Invalid Column Name", colTitle);
         }
         
       }
@@ -212,11 +244,20 @@ export class FileUploadComponent implements OnInit {
       else {
         colValue = "";
       }
-      let colKey = colKeys[colIdx];
-      if(colKey) {
-        colData[colKey] = colValue;
-      }
+      
     }
+    else if(!colNode) {
+      colValue = "";
+    }
+
+    let colKey = colKeys[colIdx];
+    if(colKey) {
+      colData[colKey] = colValue;
+    }
+    else {
+      console.log("Invalid col key", colKey);
+    }
+
     return columnIndex;
   }
 
@@ -231,10 +272,6 @@ export class FileUploadComponent implements OnInit {
       num = Math.floor(num / len) - 1;
     }
     return s;
-  }
-
-  public getJSON(): Observable<any> {
-    return this.http.get(this._jsonURL);
   }
 
 }

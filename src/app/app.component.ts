@@ -1,23 +1,10 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
-import { IFileResponse } from './model/IFileResponse';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnChanges{
-  
+export class AppComponent {
 
-  gridData:IFileResponse = {};
-
-  fileResponse(fileResponse:IFileResponse[]) {
-    console.log("success", fileResponse);
-    this.gridData = fileResponse[0];
-  }
-  
-  ngOnChanges(changes: IFileResponse): void {
-    console.log("called here.... changes");
-  }
 }

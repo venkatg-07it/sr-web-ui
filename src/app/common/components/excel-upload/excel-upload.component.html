@@ -1,0 +1,26 @@
+<div class="container">
+    <div style="margin-left:-20px">
+        <h3>{{pageTitle}}</h3>
+    </div>
+</div>
+<app-error-message [errMsg]="errMsg" *ngIf="errMsg.length > 0"></app-error-message>
+
+<app-file-upload class="col-md-10" 
+    (fileResponse)="fileResponse($event)" 
+    (fileUploaded)="fileUploaded($event)"
+    (modify)="optionModify($event)"
+    [jsonLocation]="jsonLocation"
+    (submit)="onSubmit()"
+    [isError]="errMsg.length > 0">
+</app-file-upload>
+
+<app-grid 
+    [gridData]="gridData" 
+    [compName]="'PO_FILE_UPLOAD'" 
+    [isFileUploaded]="isFileUploaded"
+    [isModify]="isModify"
+    [jsonLocation]="jsonLocation"
+    (error)="onError($event)"
+    [isSubmitted]="isSubmitted"
+    [apiUrl]="apiUrl">
+</app-grid>
