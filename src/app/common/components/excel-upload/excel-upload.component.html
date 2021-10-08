@@ -2,8 +2,14 @@
     <div style="margin-left:-20px">
         <h3>{{pageTitle}}</h3>
     </div>
+
+    <div class="alert alert-success" *ngIf="isSuccess">
+        <strong>Success.!</strong> Data uploaded successfully
+    </div>
 </div>
-<app-error-message [errMsg]="errMsg" *ngIf="errMsg.length > 0"></app-error-message>
+
+
+<app-error-message [errMsg]="errMsg" *ngIf="isError"></app-error-message>
 
 <app-file-upload class="col-md-10" 
     (fileResponse)="fileResponse($event)" 
@@ -11,7 +17,7 @@
     (modify)="optionModify($event)"
     [jsonLocation]="jsonLocation"
     (submit)="onSubmit()"
-    [isError]="errMsg.length > 0">
+    [isError]="isError">
 </app-file-upload>
 
 <app-grid 
@@ -21,6 +27,9 @@
     [isModify]="isModify"
     [jsonLocation]="jsonLocation"
     (error)="onError($event)"
+    (success)="onSuccess($event)"
     [isSubmitted]="isSubmitted"
-    [apiUrl]="apiUrl">
+    [apiUrl]="apiUrl"
+    [pageTitle]="pageTitle"
+    *ngIf = "!isSuccess">
 </app-grid>

@@ -12,7 +12,9 @@ export class ExcelUploadComponent implements OnInit {
   isFileUploaded:boolean = false;
   isSubmitted: boolean = false;
   isModify: boolean = false;
-  
+  isError: boolean = false;
+  isSuccess: boolean = false;
+
   @Input()
   jsonLocation: string = "";
   @Input()
@@ -33,6 +35,7 @@ export class ExcelUploadComponent implements OnInit {
 
   fileUploaded(isFileUploaded: boolean) {
     this.isFileUploaded = isFileUploaded;
+    this.isSuccess = false;
   }
 
   optionModify(isModify: boolean) {
@@ -45,5 +48,15 @@ export class ExcelUploadComponent implements OnInit {
 
   onError(errMsg: string) {
     this.errMsg = errMsg;
+    if(errMsg.trim().length > 0) {
+      this.isError = true;
+    }
   }
+
+  onSuccess(success: boolean) {
+    this.isSuccess = true;
+  }
+
+  
+
 }

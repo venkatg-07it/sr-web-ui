@@ -4,6 +4,10 @@ import { ColDef } from 'ag-grid-community';
 import { UtilService } from '../../services/util.service';
 import { AppConstants } from '../../constants/app-constants';
 import { ApiService } from '../../services/api.service';
+import { ExcelService } from '../../services/excel.service';
+import { cpuUsage } from 'process';
+import { IFieldConfig } from '../../model/i-field-config';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-grid',
@@ -33,8 +37,14 @@ export class GridComponent implements OnInit, OnChanges {
   @Input()
   apiUrl: string = "";
 
+  @Input()
+  pageTitle: string = "";
+
   @Output()
   error = new EventEmitter<string>();
+
+  @Output()
+  success = new EventEmitter<boolean>();
 
   visibleFields: string[] = [];
   fieldMapper: any = {};
@@ -42,6 +52,8 @@ export class GridComponent implements OnInit, OnChanges {
   fieldInfo: any;
   defaultColDef: any = {};
   dataLoaded: boolean = false;
+  validItems: any[] = [];
+  invalidItems: any[] = [];
   
 
   columnDefs: ColDef[] = [];
@@ -49,7 +61,8 @@ export class GridComponent implements OnInit, OnChanges {
   rowData:{ [key: string]: string }[] = [];
 
   constructor(private utilService: UtilService,
-    private apiService: ApiService) { 
+    private apiService: ApiService,
+    private excelService: ExcelService) { 
   }
 
   ngOnInit(): void {
@@ -59,12 +72,18 @@ export class GridComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     if(this.jsonLocation) {
       if(!this.fieldDetails) {
-        this.utilService.getJSON(this.jsonLocation + AppConstants.FILE_NAME_FIELD_DETAILS).subscribe(data => {
+        this.utilService.getJSON(
+          AppConstants.FILE_PATH_UPLOAD +
+          this.jsonLocation + 
+          AppConstants.FILE_NAME_FIELD_DETAILS).subscribe(data => {
           this.fieldDetails = data;
          });
       }
       if(!this.fieldInfo) {
-        this.utilService.getJSON(this.jsonLocation + AppConstants.FILE_NAME_FIELD_INFO).subscribe(data => {
+        this.utilService.getJSON(
+          AppConstants.FILE_PATH_UPLOAD +
+          this.jsonLocation + 
+          AppConstants.FILE_NAME_FIELD_INFO).subscribe(data => {
           this.fieldInfo = data;
          });
       }
@@ -74,12 +93,16 @@ export class GridComponent implements OnInit, OnChanges {
     this.bindGridData();
 
     if(this.isSubmitted) {
-      
+      this.postData();
+      if(this.invalidItems.length > 0) {
+        this.excelService.downloadExcel(this.pageTitle, this.invalidItems, this.fieldInfo.fields, this.fieldDetails);
+      }
     }
   }
 
   bindGridData() {
     let mandatoryFields: string[] = [];
+    let lengthConstraints: any = {};
     if(this.gridData.mapperFields && this.gridData.colMapper && this.fieldDetails) {
       
       let fieldLength = this.gridData.mapperFields.length;
@@ -88,9 +111,14 @@ export class GridComponent implements OnInit, OnChanges {
       for(let idx = 0; idx < fieldLength; idx++) {
         let columnKey = this.gridData.mapperFields[idx];
         let columnValue = this.gridData.colMapper[columnKey];
-        let width = this.fieldDetails[columnValue]["width"];
-        if(this.fieldDetails[columnValue]["mandatory"]) {
+        let fieldConfig: IFieldConfig = this.fieldDetails[columnValue];
+        let width = fieldConfig.width;
+        if(fieldConfig.required) {
           mandatoryFields.push(columnKey);
+        }
+
+        if(fieldConfig.length) {
+          lengthConstraints[columnKey] = fieldConfig.length;
         }
         let columnDef: any = {
           "field" : columnKey,
@@ -98,8 +126,10 @@ export class GridComponent implements OnInit, OnChanges {
           "width": width,
           "filter": "agTextColumnFilter"
         };
-        if(this.fieldDetails[columnValue]["pinned"]) {
-          columnDef["pinned"] = this.fieldDetails[columnValue]["pinned"];
+
+        
+        if(fieldConfig.pinned) {
+          columnDef["pinned"] = true;
         }
         columnDefs.push(columnDef);
         
@@ -119,41 +149,57 @@ export class GridComponent implements OnInit, OnChanges {
       this.rowData = this.gridData.sheetContent;
       
       this.dataLoaded = true;
-      this.validateData(mandatoryFields);
+      this.validateData(mandatoryFields, lengthConstraints);
+
+      console.log("data ", this.rowData);
+      
     }
   }
 
-  validateData(mandatoryFields: string[]) {
+  validateData(mandatoryFields: string[], lengthConstraints: any) {
     
     let mandatoryMissingFieldsIds: string[] = [];
-
+    let validData: any[] = [];
+    let inValidData: any[] = [];
     for(let item of this.rowData) {
+      let isInvalid = false;
       for(let columnData in item) {
+        let length = lengthConstraints[columnData];
+        if(length) {
+          if(item[columnData].trim().length > length) {
+            item["remarks"] = AppConstants.ERR_MSG_INVALID_LENGTH_FIELDS;
+            isInvalid = true;
+            break;
+          }
+        }
+
         if(mandatoryFields.indexOf(columnData) > -1 ) {
-          mandatoryMissingFieldsIds.push(item.sNo);
-          break;
+          if(!item[columnData]) {
+            mandatoryMissingFieldsIds.push(item.sNo);
+            item["remarks"] = AppConstants.ERR_MSG_MISSING_MANDATORY_FIELDS;
+            isInvalid = true;
+            break;
+          }        
         }
       }
-    }
-    if(mandatoryMissingFieldsIds.length > 0) {
-      let errMsg = '';
-      let arrLenth = mandatoryMissingFieldsIds.length;
-      if( arrLenth > 50) {
-        errMsg = mandatoryMissingFieldsIds.slice(0, 50).join(',') + '...' + mandatoryMissingFieldsIds[arrLenth - 1];
+      if(isInvalid) {
+        inValidData.push(item);
       }
       else {
-        errMsg = mandatoryMissingFieldsIds.join(',');
+        validData.push(item);
       }
-      this.error.emit(AppConstants.ERR_MSG_MISSING_MANDATORY_FIELDS + errMsg);
     }
+    
+    this.validItems = validData;
+    this.invalidItems = this.invalidItems;
 
   }
 
   getRequestBody() {
-    let requestBody: any = {};
+    
     let reqData: any[] = [];
     if(this.fieldInfo && this.fieldDetails) {
-      if(this.fieldInfo.groups && this.fieldInfo.groups.length > 0) {
+      if(this.fieldInfo.groups && this.fieldInfo.groups.length > 1) {
         let fieldsByGroup: any = {};
         for(let field of this.fieldInfo.fields) {
           let fieldDetail = this.fieldDetails[field];
@@ -164,35 +210,55 @@ export class GridComponent implements OnInit, OnChanges {
           if(!fields) {
             fields = [];
           }
-          fields.push(fieldDetail.field);
+          fields.push(fieldDetail.name);
 
           fieldsByGroup[group] = fields;
         }
-        for(let item of this.rowData) {
-          let groupData: any = {};
+        let groupData: any = {};
+        for(let item of this.validItems) {
+          
         for(let group of this.fieldInfo.groups) {
           let fields = fieldsByGroup[group];
           let groupItem: any = {};          
           for(let field of fields) {
             groupItem[field] = item[field];
           }
-          groupData[group] = groupItem;
+          let data = groupData[group];
+          if(!data) {
+            data = [];
+          }
+          groupItem["itemCode"] = item["itemCode"];
+          groupItem["createddate"] = new Date();
+          groupItem["updateddate"] = new Date();
+          data.push(groupItem);
+          groupData[group] = data;
         }
-        reqData.push(groupData);
+        //reqData.push(groupData);
+        
         }
+        reqData = groupData;
       }
       else {
         reqData = this.rowData;
+
+        reqData = this.rowData.map((item) => {
+          let data: any = item;
+          data["createddate"] = new Date();
+          data["updateddate"] = new Date();
+          return data;
+        });
+        
       }
     }
-    requestBody["data"] = reqData;
-    return requestBody;
+    console.log("req data",reqData);
+    return reqData;
   }
   
   postData() {
     let reqBody = this.getRequestBody();
     this.apiService.postData(this.apiUrl, reqBody).subscribe(response => {
-      console.log("success");
+      this.rowData = [];
+      this.success.emit(true);
     });
   }
 

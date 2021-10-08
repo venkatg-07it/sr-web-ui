@@ -1,0 +1,26 @@
+<div class="container"> 
+    <h4>{{pageTitle}}</h4>
+    <div class="row" style="margin-top: -40px" >
+        
+        <button class="btn btn-primary" (click)="export()"
+        style="margin-left:93%;margin-bottom: 1%">Export</button>
+    </div>
+    <div class="row">
+        <ag-grid-angular
+            style="width: 100%; height: 500px;"
+            class="ag-theme-alpine"
+            [rowData]="gridData"
+            [columnDefs]="columnDefs"
+            [defaultColDef]="defaultColDef"
+            [pagination]="true"
+            [paginationPageSize]="10"
+        >
+        </ag-grid-angular>
+    </div>
+    
+    <!-- <div id="loader" *ngIf="isFileUploaded"></div> -->
+
+  </div>
+
+  
+  

@@ -8,10 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ErrorMessageComponent implements OnInit {
 
   @Input()
-  errMsg: string = "";
+  errMsg: any;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  ngAfterContentInit() {
+    console.log("triggered");
+    console.log("errmsg", this.errMsg);
+  }
 }

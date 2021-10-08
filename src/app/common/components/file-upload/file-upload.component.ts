@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import * as JSZip from 'jszip';
 import { IFileResponse } from 'src/app/common/model/IFileResponse';
+import { AppConstants } from '../../constants/app-constants';
+import { IFieldConfig } from '../../model/i-field-config';
 import { UtilService } from '../../services/util.service';
 
 
@@ -37,7 +39,9 @@ export class FileUploadComponent implements OnInit {
 
   ngOnChanges() {
     if(!this.fieldDetails && this.jsonLocation) {
-      this.utilService.getJSON(this.jsonLocation + "field_details.json").subscribe(data => {
+      this.utilService.getJSON(
+        AppConstants.FILE_PATH_UPLOAD +
+        this.jsonLocation + AppConstants.FILE_NAME_FIELD_DETAILS).subscribe(data => {
         this.fieldDetails = data;
        });
     }
@@ -149,14 +153,21 @@ export class FileUploadComponent implements OnInit {
       if(colVal) {
         let colTitle = sharedStrings[parseInt(colVal)];
         colTitle = colTitle.trim();
-        let colKey = this.fieldDetails[colTitle].field;
-        if(colTitle && colKey) {
-          colKeys.push(colKey);
-          colMapper[colKey] = colTitle;
+        let fieldConfig: IFieldConfig = this.fieldDetails[colTitle];
+        if(fieldConfig) {
+          let colKey = fieldConfig.name;
+          if(colTitle && colKey) {
+            colKeys.push(colKey);
+            colMapper[colKey] = colTitle;
+          }
+          else {
+            console.log("Invalid Column Name", colTitle);
+          }
         }
         else {
-          console.log("Invalid Column Name", colTitle);
+          console.log("title", colTitle);
         }
+        
         
       }
       
@@ -179,16 +190,28 @@ export class FileUploadComponent implements OnInit {
 
     for(let rowIdx = 1; rowIdx < rowLength; rowIdx++) {
       let colNodes = rowNodes[rowIdx].getElementsByTagName("c");
-      
-      sheetContent.push(
-        this.getRowData(
-          colNodes,
-          rowIdx,
-          columnCount,
-          sharedStrings,
-          colKeys
-        )
+      let rowData = this.getRowData(
+        colNodes,
+        rowIdx,
+        columnCount,
+        sharedStrings,
+        colKeys
       );
+      let isValid = false;
+      for(let key in rowData) {
+        let value = rowData[key];
+        value = value.trim();
+        if(value) {
+          isValid = true;
+          break;
+        }
+      }
+      if(isValid) {
+        sheetContent.push(
+          rowData
+        );
+      }
+      
     }
 
     return sheetContent;
@@ -228,7 +251,7 @@ export class FileUploadComponent implements OnInit {
     let cIdx = this.getAlphabetByNumber(colIdx) + rIdx;
     let colNode = colNodes[columnIndex];
     let colValue = "";
-
+    
     if(colNode && colNode.getAttribute("r") == cIdx) {
       let colContent = colNode.textContent;
       if(colContent) {
@@ -239,12 +262,12 @@ export class FileUploadComponent implements OnInit {
         else {
           colValue = colContent;
         }
-        columnIndex++;
+        
       }
       else {
         colValue = "";
       }
-      
+      columnIndex++;
     }
     else if(!colNode) {
       colValue = "";

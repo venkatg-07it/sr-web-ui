@@ -1,0 +1,27 @@
+<container-element [ngSwitch]="routePath">
+    <app-ae-item-master *ngSwitchCase="'item-master'"
+        [jsonLocation]="jsonLocation"
+        [apiUrl]="apiUrl"
+        [pageTitle]="pageTitle"
+    ></app-ae-item-master>
+    <app-ae-customer-master *ngSwitchCase="'customer-master'"
+        [jsonLocation]="jsonLocation"
+        [apiUrl]="apiUrl"
+        [pageTitle]="pageTitle"
+    ></app-ae-customer-master>
+    <app-ae-component-master *ngSwitchCase="'component-master'"
+        [jsonLocation]="jsonLocation"
+        [apiUrl]="apiUrl"
+        [pageTitle]="pageTitle"
+    ></app-ae-component-master>
+    <app-ae-assembly-master *ngSwitchCase="'assembly-master'"
+        [jsonLocation]="jsonLocation"
+        [apiUrl]="apiUrl"
+        [pageTitle]="pageTitle"
+    ></app-ae-assembly-master>
+    <app-ae-im-raw-mat-master *ngSwitchCase="'im-raw-material-master'"
+        [jsonLocation]="jsonLocation"
+        [apiUrl]="apiUrl"
+        [pageTitle]="pageTitle"
+    ></app-ae-im-raw-mat-master>
+</container-element>

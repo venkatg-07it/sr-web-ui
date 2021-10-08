@@ -1,423 +1,633 @@
 {
     "S.No.": {
-        "headerName": "S.No.",
-        "field": "sNo",
+        "label": "S.No.",
+        "name": "sNo",
         "width": 70,
         "pinned": "left"
     },
     "Customer Name":{
-        "headerName": "Customer Name",
-        "field": "customerName",
+        "label": "Customer Name",
+        "name": "customername",
         "width": 200,
         "group": "itemMaster",
         "pinned": "left",
-        "mandatory": true
+        "required": true,
+        "length": 50,
+        "type": "text",
+        "row": 1,
+        "col": 1
     },
     "Customer Code":{
-        "headerName": "Customer Code",
-        "field": "customerCode",
+        "label": "Customer Code",
+        "name": "customercode",
         "width": 200,
         "group": "itemMaster",
-        "mandatory": true
+        "required": true,
+        "length": 7,
+        "type": "text",
+        "row": 1,
+        "col": 2
     },
     "Item Code":{
-        "headerName": "Item Code",
-        "field": "itemCode",
+        "label": "Item Code",
+        "name": "itemcode",
         "width": 200,
         "group": "itemMaster",
-        "mandatory": true
+        "required": true,
+        "length": 75,
+        "type": "text",
+        "row": 1,
+        "col": 3
     },
     "Description":{
-        "headerName": "Description",
-        "field": "description",
+        "label": "Description",
+        "name": "description",
         "width": 200,
         "group": "itemMaster",
-        "mandatory": true
+        "required": true,
+        "length": 50,
+        "type": "text",
+        "row": 2,
+        "col": 1
     },
     "Reference Standard": {
-        "headerName": "Reference Standard",
-        "field": "referenceStandard",
+        "label": "Reference Standard",
+        "name": "referencestandard",
         "width": 200,
-        "group": "itemMaster"
+        "group": "itemMaster",
+        "length": 20,
+        "type": "text",
+        "row": 2,
+        "col": 2
     },
     "Equivalent Samraj Item Code": {
-        "headerName": "Equivalent Samraj Item Code",
-        "field": "equivalentSamrajItemCode",
+        "label": "Equivalent Samraj Item Code",
+        "name": "equivalentsamrajitemcode",
         "width": 200,
-        "group": "itemMaster"
+        "group": "itemMaster",
+        "length": 27,
+        "type": "text",
+        "row": 2,
+        "col": 3
     },
     "Live/Retired": {
-        "headerName": "Live/Retired",
-        "field": "liveOrRetried",
+        "label": "Live/Retired",
+        "name": "liveorretired",
         "width": 200,
         "group": "itemMaster",
-        "mandatory": true
+        "required": true,
+        "length": 1,
+        "type": "text",
+        "row": 3,
+        "col": 1
     },
     "Revision Level":{
-        "headerName": "Revision Level",
-        "field": "revisionLevel",
+        "label": "Revision Level",
+        "name": "revisionlevel",
         "width": 200,
         "group": "itemMaster",
-        "mandatory": true
+        "required": true,
+        "row": 3,
+        "type": "text",
+        "col": 2
     },
     "UOM":{
-        "headerName": "UOM",
-        "field": "uom",
+        "label": "UOM",
+        "name": "uom",
         "width": 100,
         "group": "itemMaster",
-        "mandatory": true
+        "required": true,
+        "type": "text",
+        "row": 3,
+        "col": 3
     },
     "SUOM":{
-        "headerName": "SUOM",
-        "field": "suom",
+        "label": "SUOM",
+        "name": "suom",
         "width": 100,
         "group": "itemMaster",
-        "mandatory": true
+        "required": true,
+        "type": "text",
+        "row": 4,
+        "col": 1
     },
     "LC-1":{
-        "headerName": "LC-1",
-        "field": "lc1",
+        "label": "LC-1",
+        "name": "lc1",
         "width": 100,
         "group": "itemMaster",
-        "mandatory": true
+        "required": true,
+        "type": "text",
+        "row": 4,
+        "col": 2
     },
     "LC-2":{
-        "headerName": "LC-2",
-        "field": "lc2",
+        "label": "LC-2",
+        "name": "lc2",
         "width": 100,
         "group": "itemMaster",
-        "mandatory": true
+        "required": true,
+        "type": "text",
+        "row": 4,
+        "col": 3
     },
     "Process Revision Level":{
-        "headerName": "Process Revision Level",
-        "field": "processRevisionLevel",
+        "label": "Process Revision Level",
+        "name": "processrevisionlevel",
         "width": 100,
         "group": "itemMasterProcessFlow",
-        "mandatory": true
+        "required": true,
+        "type": "text",
+        "row": 1,
+        "col": 1
     },
     "Process-1":{
-        "headerName": "Process-1",
-        "field": "process1",
+        "label": "Process-1",
+        "name": "process1",
         "width": 150,
         "group": "itemMasterProcessFlow",
-        "mandatory": true
+        "required": true,
+        "type": "text",
+        "row": 1,
+        "col": 2
     },
     "Machine-1":{
-        "headerName": "Machine-1",
-        "field": "machine1",
+        "label": "Machine-1",
+        "name": "machine1",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 1,
+        "col": 3
     },
+    
     "Process-2":{
-        "headerName": "Process-2",
-        "field": "process2",
+        "label": "Process-2",
+        "name": "process2",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 2,
+        "col": 1
     },
     "Machine-2":{
-        "headerName": "Machine-2",
-        "field": "machine2",
+        "label": "Machine-2",
+        "name": "machine2",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 2,
+        "col": 2
     },
     "Process-3":{
-        "headerName": "Process-3",
-        "field": "process3",
+        "label": "Process-3",
+        "name": "process3",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 2,
+        "col": 3
     },
     "Machine-3":{
-        "headerName": "Machine-3",
-        "field": "machine3",
+        "label": "Machine-3",
+        "name": "machine3",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 3,
+        "col": 1
     },
     "Process-4":{
-        "headerName": "Process-4",
-        "field": "process4",
+        "label": "Process-4",
+        "name": "process4",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 3,
+        "col": 2
     },
     "Machine-4":{
-        "headerName": "Machine-4",
-        "field": "machine4",
+        "label": "Machine-4",
+        "name": "machine4",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 3,
+        "col": 3
     },
     "Process-5":{
-        "headerName": "Process-5",
-        "field": "process5",
+        "label": "Process-5",
+        "name": "process5",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 4,
+        "col": 1
     },
     "Machine-5":{
-        "headerName": "Machine-5",
-        "field": "machine5",
+        "label": "Machine-5",
+        "name": "machine5",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 4,
+        "col": 2
     },
     "Process-6":{
-        "headerName": "Process-6",
-        "field": "process6",
+        "label": "Process-6",
+        "name": "process6",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 4,
+        "col": 3
     },
     "Machine-6":{
-        "headerName": "Machine-6",
-        "field": "machine6",
+        "label": "Machine-6",
+        "name": "machine6",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 5,
+        "col": 1
     },
     "Process-7":{
-        "headerName": "Process-7",
-        "field": "process7",
+        "label": "Process-7",
+        "name": "process7",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 5,
+        "col": 2
     },
     "Machine-7":{
-        "headerName": "Machine-7",
-        "field": "machine7",
+        "label": "Machine-7",
+        "name": "machine7",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 5,
+        "col": 3
     },
     "Process-8":{
-        "headerName": "Process-8",
-        "field": "process8",
+        "label": "Process-8",
+        "name": "process8",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 6,
+        "col": 1
     },
     "Machine-8":{
-        "headerName": "Machine-8",
-        "field": "machine8",
+        "label": "Machine-8",
+        "name": "machine8",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 6,
+        "col": 2
     },
     "Process-9":{
-        "headerName": "Process-9",
-        "field": "process9",
+        "label": "Process-9",
+        "name": "process9",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 6,
+        "col": 3
     },
     "Machine-9":{
-        "headerName": "Machine-9",
-        "field": "machine9",
+        "label": "Machine-9",
+        "name": "machine9",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 7,
+        "col": 1
     },
     "Process-10":{
-        "headerName": "Process-10",
-        "field": "process10",
+        "label": "Process-10",
+        "name": "process10",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 7,
+        "col": 2
     },
     "Machine-10":{
-        "headerName": "Machine-10",
-        "field": "machine10",
+        "label": "Machine-10",
+        "name": "machine10",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 7,
+        "col": 3
     },
     "Process-11":{
-        "headerName": "Process-11",
-        "field": "process11",
+        "label": "Process-11",
+        "name": "process11",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 8,
+        "col": 1
     },
     "Machine-11":{
-        "headerName": "Machine-11",
-        "field": "machine11",
+        "label": "Machine-11",
+        "name": "machine11",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 8,
+        "col": 2
     },
     "Process-12":{
-        "headerName": "Process-12",
-        "field": "process12",
+        "label": "Process-12",
+        "name": "process12",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 8,
+        "col": 3
     },
     "Machine-12":{
-        "headerName": "Machine-12",
-        "field": "machine12",
+        "label": "Machine-12",
+        "name": "machine12",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 9,
+        "col": 1
     },
     "Process-13":{
-        "headerName": "Process-13",
-        "field": "process13",
+        "label": "Process-13",
+        "name": "process13",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 9,
+        "col": 2
     },
     "Machine-13":{
-        "headerName": "Machine-13",
-        "field": "machine13",
+        "label": "Machine-13",
+        "name": "machine13",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 9,
+        "col": 3
     },
     "Process-14":{
-        "headerName": "Process-14",
-        "field": "process14",
+        "label": "Process-14",
+        "name": "process14",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 10,
+        "col": 1
     },
     "Machine-14":{
-        "headerName": "Machine-14",
-        "field": "machine14",
+        "label": "Machine-14",
+        "name": "machine14",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 10,
+        "col": 2
     },
     "Process-15":{
-        "headerName": "Process-15",
-        "field": "process15",
+        "label": "Process-15",
+        "name": "process15",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 10,
+        "col": 3
     },
     "Machine-15":{
-        "headerName": "Machine-15",
-        "field": "machine15",
+        "label": "Machine-15",
+        "name": "machine15",
         "width": 150,
-        "group": "itemMasterProcessFlow"
+        "group": "itemMasterProcessFlow",
+        "type": "text",
+        "row": 10,
+        "col": 4
     },
     "Finish Type":{
-        "headerName": "Finish Type",
-        "field": "finishType",
+        "label": "Finish Type",
+        "name": "finishtype",
         "width": 100,
-        "group": "itemMasterFinishFlow"
+        "group": "itemMasterFinishFlow",
+        "type": "text",
+        "row": 1,
+        "col": 1
     },
     "Surface Preparation":{
-        "headerName": "Surface Preparation",
-        "field": "surfacePreparation",
+        "label": "Surface Preparation",
+        "name": "surfacepreparation",
         "width": 100,
-        "group": "itemMasterFinishFlow"
+        "group": "itemMasterFinishFlow",
+        "type": "text",
+        "row": 1,
+        "col": 2
+        
     },
     "Primer Colour":{
-        "headerName": "Primer Colour",
-        "field": "primerColour",
+        "label": "Primer Colour",
+        "name": "primercolour",
         "width": 100,
-        "group": "itemMasterFinishFlow"
+        "group": "itemMasterFinishFlow",
+        "type": "text",
+        "row": 1,
+        "col": 3
     },
     "Primer DFT":{
-        "headerName": "Primer DFT",
-        "field": "primerDFT",
+        "label": "Primer DFT",
+        "name": "primerDft",
         "width": 100,
-        "group": "itemMasterFinishFlow"
+        "group": "itemMasterFinishFlow",
+        "type": "text",
+        "row": 2,
+        "col": 1
     },
     "IMO Colour":{
-        "headerName": "IMO Colour",
-        "field": "imoColour",
+        "label": "IMO Colour",
+        "name": "imocolour",
         "width": 100,
-        "group": "itemMasterFinishFlow"
+        "group": "itemMasterFinishFlow",
+        "type": "text",
+        "row": 2,
+        "col": 2
     },
     "IMO DFT":{
-        "headerName": "IMO DFT",
-        "field": "imoDFT",
+        "label": "IMO DFT",
+        "name": "imodft",
         "width": 100,
-        "group": "itemMasterFinishFlow"
+        "group": "itemMasterFinishFlow",
+        "type": "text",
+        "row": 2,
+        "col": 3
     },
     "Top Coat Colour":{
-        "headerName": "Top Coat Colour",
-        "field": "topCoatColour",
+        "label": "Top Coat Colour",
+        "name": "topCoatColour",
         "width": 100,
-        "group": "itemMasterFinishFlow"
+        "group": "itemMasterFinishFlow",
+        "type": "text",
+        "row": 3,
+        "col": 1
     },
     "Top Coat DFT":{
-        "headerName": "Top Coat DFT",
-        "field": "topCoatDFT",
+        "label": "Top Coat DFT",
+        "name": "topCoatDft",
         "width": 100,
-        "group": "itemMasterFinishFlow"
+        "group": "itemMasterFinishFlow",
+        "type": "text",
+        "row": 3,
+        "col": 2
     },
     "Special Finish Details":{
-        "headerName": "Special Finish Details",
-        "field": "specialFinishDetails",
+        "label": "Special Finish Details",
+        "name": "specialFinishdetails",
         "width": 100,
-        "group": "itemMasterFinishFlow"
+        "group": "itemMasterFinishFlow",
+        "type": "text",
+        "row": 3,
+        "col": 3
     },
     "QUALITY FLAG":{
-        "headerName": "QUALITY FLAG",
-        "field": "qualityFlag",
+        "label": "QUALITY FLAG",
+        "name": "qualityflag",
         "width": 100,
-        "group": "itemMasterQA"
+        "group": "itemMasterQA",
+        "type": "text",
+        "row": 1,
+        "col": 1
     },
     "Inspection Criteria":{
-        "headerName": "Inspection Criteria",
-        "field": "inspectionCriteria",
+        "label": "Inspection Criteria",
+        "name": "inspectionCriteria",
         "width": 20,
-        "group": "itemMasterQA"
+        "group": "itemMasterQA",
+        "type": "text",
+        "row": 1,
+        "col": 2
     },
     "Qty to be Inspected":{
-        "headerName": "Qty to be Inspected",
-        "field": "qtyToBeInspected",
+        "label": "Qty to be Inspected",
+        "name": "qtytobeInspected",
         "width": 100,
-        "group": "itemMasterQA"
+        "group": "itemMasterQA",
+        "type": "text",
+        "row": 1,
+        "col": 3
     },
     "Image 1":{
-        "headerName": "Image 1",
-        "field": "image1",
+        "label": "Image 1",
+        "name": "image1",
         "width": 100,
-        "group": "itemMasterImage"
+        "group": "itemMasterImage",
+        "type": "file",
+        "row": 1,
+        "col": 1
     },
     "Image 2":{
-        "headerName": "Image 2",
-        "field": "image2",
+        "label": "Image 2",
+        "name": "image2",
         "width": 100,
-        "group": "itemMasterImage"
+        "group": "itemMasterImage",
+        "type": "file",
+        "row": 2,
+        "col": 1
     },
     "Remarks":{
-        "headerName": "Remarks",
-        "field": "remarks",
+        "label": "Remarks",
+        "name": "remarks",
         "width": 100,
-        "group": "itemMaster"
+        "group": "itemMaster",
+        "type": "text",
+        "row": 12,
+        "col": 1
     },
     "Group Code":{
-        "headerName": "Group Code",
-        "field": "groupCode",
+        "label": "Group Code",
+        "name": "groupCode",
         "width": 100,
-        "group": "itemMasterAddon"
+        "group": "itemMasterAddon",
+        "type": "text",
+        "row": 1,
+        "col": 1
     },
     "Inventory Code":{
-        "headerName": "Inventory Code",
-        "field": "inventoryCode",
+        "label": "Inventory Code",
+        "name": "inventorycode",
         "width": 100,
-        "group": "itemMasterAddon"
+        "group": "itemMasterAddon",
+        "type": "text",
+        "row": 1,
+        "col": 2
     },
     "Handling Person-1":{
-        "headerName": "Handling Person-1",
-        "field": "handlingPerson1",
+        "label": "Handling Person-1",
+        "name": "handlingPerson1",
         "width": 100,
-        "group": "itemMasterAddon"
+        "group": "itemMasterAddon",
+        "type": "text",
+        "row": 1,
+        "col": 3
     },
     "Handling Person-2":{
-        "headerName": "Handling Person-2",
-        "field": "handlingPerson2",
+        "label": "Handling Person-2",
+        "name": "handlingPerson2",
         "width": 100,
-        "group": "itemMasterAddon"
+        "group": "itemMasterAddon",
+        "type": "text",
+        "row": 2,
+        "col": 1
     },
     "CLASSIFICATION CODE":{
-        "headerName": "CLASSIFICATION CODE",
-        "field": "classificationCode",
+        "label": "CLASSIFICATION CODE",
+        "name": "classificationCode",
         "width": 100,
-        "group": "itemMasterAddon"
+        "group": "itemMasterAddon",
+        "type": "text",
+        "row": 2,
+        "col": 2
     },
     "Item Classification (2)":{
-        "headerName": "Item Classification (2)",
-        "field": "itemClassification",
+        "label": "Item Classification (2)",
+        "name": "itemClassification",
         "width": 100,
-        "group": "itemMasterAddon"
+        "group": "itemMasterAddon",
+        "type": "text",
+        "row": 2,
+        "col": 3
     },
     "Location of origin (2)":{
-        "headerName": "Location of origin (2)",
-        "field": "locationOfOrigin",
+        "label": "Location of origin (2)",
+        "name": "locationoforigin",
         "width": 100,
-        "group": "itemMasterAddon"
+        "group": "itemMasterAddon",
+        "type": "text",
+        "row": 3,
+        "col": 1
     },
     "Engineering issue level (2)":{
-        "headerName": "Engineering issue level (2)",
-        "field": "engineeringIssueLevel",
+        "label": "Engineering issue level (2)",
+        "name": "engineeringissuelevel",
         "width": 100,
-        "group": "itemMasterAddon"
+        "group": "itemMasterAddon",
+        "type": "text",
+        "row": 3,
+        "col": 2
     },
     "Raw material Specifications(2)":{
-        "headerName": "Raw material Specifications(2)",
-        "field": "rawMaterialSpecifications",
+        "label": "Raw material Specifications(2)",
+        "name": "rawmaterialSpecifications",
         "width": 100,
-        "group": "itemMasterAddon"
+        "group": "itemMasterAddon",
+        "type": "text",
+        "row": 3,
+        "col": 3
     }
 }

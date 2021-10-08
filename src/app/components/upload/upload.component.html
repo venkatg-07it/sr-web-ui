@@ -1,0 +1,27 @@
+<container-element [ngSwitch]="routePath">
+    <app-item-master *ngSwitchCase="'item-master-upload'"
+        [jsonLocation]="jsonLocation"
+        [apiUrl]="apiUrl"
+        [pageTitle]="pageTitle"
+    ></app-item-master>
+    <app-customer-master *ngSwitchCase="'customer-master-upload'"
+        [jsonLocation]="jsonLocation"
+        [apiUrl]="apiUrl"
+        [pageTitle]="pageTitle"
+    ></app-customer-master>
+    <app-component-master *ngSwitchCase="'component-master-upload'"
+        [jsonLocation]="jsonLocation"
+        [apiUrl]="apiUrl"
+        [pageTitle]="pageTitle"
+    ></app-component-master>
+    <app-assembly-master *ngSwitchCase="'assembly-master-upload'"
+        [jsonLocation]="jsonLocation"
+        [apiUrl]="apiUrl"
+        [pageTitle]="pageTitle"
+    ></app-assembly-master>
+    <app-im-raw-mat-master *ngSwitchCase="'im-raw-materials-master-upload'"
+        [jsonLocation]="jsonLocation"
+        [apiUrl]="apiUrl"
+        [pageTitle]="pageTitle"
+    ></app-im-raw-mat-master>
+</container-element>
